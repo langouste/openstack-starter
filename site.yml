@@ -1,0 +1,20 @@
+- name: Set up Hello World
+  hosts: all
+  gather_facts: false
+  become: yes
+
+  tasks:
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Replace default html
+    copy:
+      content: 'Hello world !'
+      dest: /var/www/html/index.html
+
+  - name: Start service
+    service:
+      name: nginx
+      state: started
