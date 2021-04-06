@@ -1,6 +1,9 @@
 # Environement
 .env
 
+# Python virtual env
+.venv
+
 # Terraform
 **/.terraform/*
 *.tfstate
