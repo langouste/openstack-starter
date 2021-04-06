@@ -29,7 +29,7 @@ resource "local_file" "inventory" {
   filename = "hosts"
   content  = <<EOF
 [sandbox]
-${openstack_compute_instance_v2.test-server.name} ansible_host=${openstack_compute_instance_v2.test-server.access_ip_v4} ansible_user=ubuntu
+${openstack_compute_instance_v2.test-server.name} ansible_host=${openstack_compute_instance_v2.test-server.access_ip_v4} ansible_user=ubuntu ansible_private_key_file=~/.ssh/ovhcloud
 
 EOF
 }
