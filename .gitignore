@@ -1,6 +1,10 @@
 # Environement
 .env
 
+# Makefile
+.makefile.docker-cp.state
+.makefile.image-build.state
+
 # Python virtual env
 .venv
 

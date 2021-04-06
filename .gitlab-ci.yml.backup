@@ -1,0 +1,17 @@
+build-job:
+  stage: build
+  tags: 
+    - local
+  image: openstack-starter
+  script:
+    - ls -l
+    - terraform --version
+    - ansible --version
+    - openstack --version
+    - ssh-keygen -t rsa -b 4096 -f ~/.ssh/ovhcloud -N '' <<< n
+    - # need a .env here
+    - source openrc.sh
+    - terraform init
+    - terraform apply -auto-approve 
+    - sleep 6
+    - ansible-playbook site.yml
