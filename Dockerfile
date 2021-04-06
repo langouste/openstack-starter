@@ -19,6 +19,3 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN rm -rf requirements.txt .cache
 
-COPY .env openrc.sh main.tf .terraform.lock.hcl ansible.cfg site.yml test.sh ./
-
-

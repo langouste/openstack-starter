@@ -2,11 +2,16 @@ build-job:
   stage: build
   tags: 
     - local
-  image: alpine:3.13
+  image: openstack-starter
   script:
-    - apk add --update git terraform ansible bash openssh py3-pip
-    - apk add gcc python3-dev musl-dev linux-headers
-    - pip install -r requirements.txt
+    - ls -l
     - terraform --version
     - ansible --version
     - openstack --version
+    - ssh-keygen -t rsa -b 4096 -f ~/.ssh/ovhcloud -N '' <<< n
+    - # need a .env here
+    - source openrc.sh
+    - terraform init
+    - terraform apply -auto-approve 
+    - sleep 6
+    - ansible-playbook site.yml
