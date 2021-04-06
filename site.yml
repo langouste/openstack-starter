@@ -12,6 +12,7 @@
   - name: Replace default html
     copy:
       content: 'Hello world !'
+      mode: 0644
       dest: /var/www/html/index.html
 
   - name: Start service
