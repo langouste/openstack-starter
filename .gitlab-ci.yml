@@ -1,6 +1,12 @@
 build-job:
+  stage: build
   tags: 
     - local
-  stage: build
+  image: alpine:3.13
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - apk add --update git terraform ansible bash openssh py3-pip
+    - apk add gcc python3-dev musl-dev linux-headers
+    - pip install -r requirements.txt
+    - terraform --version
+    - ansible --version
+    - openstack --version
