@@ -10,5 +10,5 @@ terraform init
 
 terraform apply -auto-approve && \
 # Wait for SSH connection available
-sleep 2 && \
+sleep 6 && \
 ansible-playbook site.yml

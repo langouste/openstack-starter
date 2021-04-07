@@ -2,7 +2,8 @@
 .env
 
 # Makefile
-.docker-cp.lock
+.makefile.docker-cp.state
+.makefile.image-build.state
 
 # Python virtual env
 .venv

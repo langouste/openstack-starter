@@ -1,7 +1,9 @@
 Minimal code to start deploy machines on the **OVH Public Cloud** (OpenStack) with **Terraform** and **Ansible**.
 
-Usage
------
+Usage without docker
+--------------------
+
+Instructions for use directly on your system. For use with docker see below.
 
 ### 1. Install requirements
 
@@ -58,3 +60,47 @@ $ ansible-playbook site.yml
 ```bash
 $ terraform destroy
 ```
+
+Usage with docker
+-----------------
+
+### 1. Set OpenStack configuration and keypair
+
+```bash
+$ cp .env.example .env
+```
+
+Edit `.env` with sensitive values and load them in the shell
+
+```bash
+$ vim .env
+```
+
+### 2. Use tools on docker via make
+
+```bash
+$ make shell
+(...)
+bash-5.1# ./create-server.sh
+bash-5.1# source openrc.sh
+bash-5.1# openstack server list
++--------------------------------------+-------------+--------+----------------------------------------------+-------+--------+
+| ID                                   | Name        | Status | Networks                                     | Image | Flavor |
++--------------------------------------+-------------+--------+----------------------------------------------+-------+--------+
+| e624c727-13ab-4cce-b797-3cb56d50591c | ubuntu-test | ACTIVE | Ext-Net=2001:41d0:801:1000::2138, 54.37.5.51 |       | s1-2   |
++--------------------------------------+-------------+--------+----------------------------------------------+-------+--------+
+
+bash-5.1# wget -q -O - 54.37.5.51; echo
+Hello world !
+bash-5.1# terraform destroy
+bash-5.1# exit
+$ make clean
+```
+
+If you edit some files re-copy then in the container
+
+```bash
+$ make
+Copy this files in the container : .env openrc.sh main.tf .terraform.lock.hcl ansible.cfg site.yml
+```
+
