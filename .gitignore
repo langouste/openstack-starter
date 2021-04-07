@@ -1,6 +1,9 @@
 # Environement
 .env
 
+# Makefile
+.docker-cp.lock
+
 # Python virtual env
 .venv
 

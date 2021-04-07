@@ -5,6 +5,7 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/ovhcloud -N '' <<< n
 
 source openrc.sh
 
+# Install terraform providers
 terraform init
 
 terraform apply -auto-approve && \
