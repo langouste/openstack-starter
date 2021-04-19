@@ -32,3 +32,5 @@ export OS_USERNAME
 
 # With Keystone you pass the keystone password.
 export OS_PASSWORD
+
+export OS_REGION_NAME

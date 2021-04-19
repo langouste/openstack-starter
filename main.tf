@@ -19,7 +19,7 @@ resource "openstack_compute_keypair_v2" "ansible-keypair" {
 
 resource "openstack_compute_instance_v2" "test-server" {
   name        = "ubuntu-test"
-  image_id    = "6c86b11d-b5f9-43b6-9eb0-4eed28532f4c" # Ubuntu 20.04 LTS
+  image_name    = "Ubuntu 20.04" # Ubuntu 20.04 LTS
   flavor_name = "s1-2"                                 # Sandbox 2Go RAM / 10Go SSD
   key_pair    = openstack_compute_keypair_v2.ansible-keypair.name
 }
