@@ -104,3 +104,29 @@ $ make
 Copy this files in the container : .env openrc.sh main.tf .terraform.lock.hcl ansible.cfg site.yml
 ```
 
+Usage with nixpkgs
+------------------
+
+Only __nixpkgs__ and __pip__ required.
+
+### 1. Install python requirements in a virtual env (optional)
+
+```bash
+$ python -m venv .venv
+$ pip install -r requirements.txt
+```
+
+### 2. Get a working environment
+
+
+```bash
+$ nix-shell
+```
+
+This command :
+
+- Install system dependencies (terraform, ansible)
+- Load environment variables on openrc.sh
+- Activate the virtual python environment .venv
+
+Next you can use terraform and ansible commands to perform actions described below.
